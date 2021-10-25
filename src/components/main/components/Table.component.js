@@ -3,7 +3,6 @@ import Table from "react-bootstrap/Table";
 import ItemTableCurrency from "./ItemTable.component";
 
 const TableCurrency = ({assets}) => {
-
 	return (
 		<Table striped bordered hover responsive="lg" className="table__wrapper" >
 			<thead >
