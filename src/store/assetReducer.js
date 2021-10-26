@@ -1,6 +1,7 @@
 const defaultState = {
 	assets: [],
-	page: 1,
+	activePage: 1,
+	isOpenAssets: false,
 	limit: 10,
 };
 
@@ -9,7 +10,9 @@ const assetReducer = (state = defaultState, action) => {
 		case "ADD_ASSETS":
 			return {...state, assets: action.payload};
 		case "SET_PAGE":
-			return {...state, page: action.payload};
+			return {...state, activePage: action.payload};
+		case "SET_IS_OPEN_ASSETS":
+			return {...state, isOpenAssets: action.payload};
 		default:
 			return state;
 	}

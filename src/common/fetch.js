@@ -1,5 +1,4 @@
 import axios from "axios";
-import {useSelector} from "react-redux";
 
 const getCripto = async (page, limit) => {
     try {
@@ -12,9 +11,25 @@ const getCripto = async (page, limit) => {
         return response.data;
     } catch (e) {
         console.log(e);
-        return [];
+        return 0;
     }
-
 };
 
-export default getCripto;
+const getCurrentCripto = async (id, start, end) => {
+    console.log('------------')
+    try {
+        const response = await axios.get(`https://api.coincap.io/v2/assets/${id}/history`, {
+            params: {
+                interval: 'h1',
+                start: start,
+                end: end,
+            }
+        });
+        return response.data;
+    } catch (e) {
+        console.log(e);
+        return 0;
+    }
+};
+
+export {getCripto, getCurrentCripto};
