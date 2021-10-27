@@ -11,7 +11,7 @@ const Chart = ({assets24h, min, max}) => {
     };
 
     return (
-        <ResponsiveContainer width="100%" height={300}>
+        <ResponsiveContainer width="95%" height={300}>
             <LineChart
                 data={assets24h}
                 margin={{top: 5, right: 10, left: 10, bottom: 5}}

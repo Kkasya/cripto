@@ -10,11 +10,10 @@ const PaginationBlock = () => {
 
     const setPage = (page) => {
         dispatch({type: "SET_PAGE", payload: page});
-        console.log(page)
     }
 
     return (
-        <Pagination className="centeredBlock">
+        <Pagination className="centeredBlock flex-wrap">
             {pages.map((page) =>
                 <Pagination.Item key={page} active={page === activePage} onClick={()=>setPage(page)} >
                     {page}

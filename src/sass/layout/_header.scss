@@ -1,0 +1,38 @@
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  &__content {
+    padding: 20px 0;
+  }
+
+
+  @media (max-width: $mobile-width) {
+    flex-direction: column;
+  }
+}
+
+.popularCripto {
+  &__content {
+    @media (max-width: $mobile-width) {
+      width: 100%;
+      padding-bottom: 20px;
+    }
+  }
+
+  &__item {
+    @media (max-width: $mobile-width) {
+      text-align: center;
+    }
+  }
+
+  &__name {
+    padding-right: 20px;
+
+    @media (max-width: $mobile-width) {
+      padding-right: 0;
+      padding-bottom: 20px;
+    }
+  }
+}

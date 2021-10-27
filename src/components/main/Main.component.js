@@ -4,6 +4,7 @@ import TableCurrency from "./components/Table.component";
 import {useDispatch, useSelector} from "react-redux";
 import PaginationBlock from "./components/Pagination.component";
 import Loader from "./components/Loader.component";
+import Header from "../header/Header.component";
 
 const Main = () => {
     const dispatch = useDispatch();
@@ -23,11 +24,12 @@ const Main = () => {
     }, [activePage]);
 
     useEffect(() => {
-        // setInterval(getAssets, 10000);
+        setInterval(getAssets, 10000);
     }, []);
 
     return (
         <div className="main main__content">
+            <Header />
             {isOpenAssets ?
                 <>
                     <TableCurrency assets={assets}/>

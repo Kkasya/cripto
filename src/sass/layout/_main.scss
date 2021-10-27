@@ -2,17 +2,17 @@
   &__content {
     max-width: $pc-width;
     height: 100%;
-    padding: 60px;
+    padding: 0 60px 60px 60px;
     display: flex;
     flex-direction: column;
     justify-content: center;
 
     @media (max-width: $tablet-width) {
-      padding: 20px;
+      padding: 0 20px 20px 20px;
     }
 
     @media (max-width: $mobile-width) {
-      padding: 20px 0;
+      padding: 0 0 20px 0;
     }
   }
 
