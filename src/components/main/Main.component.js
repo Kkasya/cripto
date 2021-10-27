@@ -5,6 +5,8 @@ import {useDispatch, useSelector} from "react-redux";
 import PaginationBlock from "./components/Pagination.component";
 import Loader from "./components/Loader.component";
 import Header from "../header/Header.component";
+import Wallet from "../wallet/Wallet.component";
+import AddingCurrency from "./components/AddingCurrency.component";
 
 const Main = () => {
     const dispatch = useDispatch();
@@ -30,6 +32,8 @@ const Main = () => {
     return (
         <div className="main main__content">
             <Header />
+            <Wallet />
+            <AddingCurrency />
             {isOpenAssets ?
                 <>
                     <TableCurrency assets={assets}/>

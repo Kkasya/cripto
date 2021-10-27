@@ -15,6 +15,7 @@ const TableCurrency = ({assets}) => {
 				<th >Supply</th >
 				<th >Volume(24Hr)</th >
 				<th >Change(24Hr)</th >
+				<th></th>
 			</tr >
 			</thead >
 			<tbody >
