@@ -1,0 +1,26 @@
+.card {
+  &__wrapper {
+    padding: 20px 60px 20px 60px;
+  }
+
+  &__info {
+    display: flex;
+    & img {
+      margin-right: 20px;
+
+    }
+  }
+  &__content {
+    display: flex;
+    justify-content: space-between;
+    padding-bottom: 30px;
+
+    &__item {
+      display: flex;
+      flex-direction: column;
+      & span {
+        font-size: 18px;
+      }
+    }
+  }
+}

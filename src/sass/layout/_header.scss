@@ -8,21 +8,22 @@
   }
 
 
-  @media (max-width: $mobile-width) {
+  @media (max-width: $tablet-width) {
     flex-direction: column;
   }
 }
 
 .popularCripto {
   &__content {
-    @media (max-width: $mobile-width) {
-      width: 100%;
+    @media (max-width: $tablet-width) {
+      display: flex;
+      justify-content: center;
       padding-bottom: 20px;
     }
   }
 
   &__item {
-    @media (max-width: $mobile-width) {
+    @media (max-width: $tablet-width) {
       text-align: center;
     }
   }
@@ -30,7 +31,7 @@
   &__name {
     padding-right: 20px;
 
-    @media (max-width: $mobile-width) {
+    @media (max-width: $tablet-width) {
       padding-right: 0;
       padding-bottom: 20px;
     }
@@ -39,4 +40,11 @@
 
 .btn-close {
   margin-left: 0 !important;
+}
+
+.wallet__info {
+  display: flex;
+  &>* {
+    padding: 5px;
+  }
 }

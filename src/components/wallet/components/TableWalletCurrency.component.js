@@ -20,7 +20,7 @@ const TableWalletCurrency = () => {
             </thead >
             <tbody >
             {currency.map((item, index) =>
-                <ItemTableWalletCurrency key={item.id} currency={item} index={index+1} />)
+                <ItemTableWalletCurrency key={index} currency={item} index={index+1} />)
             }
             </tbody >
         </Table >

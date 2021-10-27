@@ -42,6 +42,9 @@ const AddingCurrency = () => {
                     <FormControl
                         placeholder="Count of currency"
                         aria-label="Count"
+                        type="number"
+                        min="0"
+                        step="0.01"
                         onChange={(e) => setCount(e.target.value)}
                     />
                 </InputGroup>

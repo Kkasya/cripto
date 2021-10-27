@@ -7,10 +7,26 @@ const Header = () => {
     const {assets} = useSelector(state => state.assets);
     const popularCripto = assets.slice(0, 3);
     const dispatch = useDispatch();
+    const {currency, addedCurrency, changeWallet} = useSelector(state => state.wallet);
+
+    const summaryCurrency = () => {
+        let summary = 0;
+        [...currency].forEach((item) => {
+            summary += item.summary;
+        });
+        return summary;
+    };
+
+    const summary = summaryCurrency();
+
+    const changePercent = () => {
+        const prevSummary = summary === changeWallet ? changeWallet : summary - changeWallet;
+        return changeWallet ? (changeWallet * 100 / prevSummary).toFixed() : 0
+    }
 
     const openWallet = () => {
         dispatch({type: "SET_IS_OPEN_WALLET", payload: true});
-    }
+    };
 
     return (
         <div className="header header__content">
@@ -22,7 +38,12 @@ const Header = () => {
                     </ListGroup.Item>
                 )}
             </ListGroup>
-            <Button variant="info" onClick={openWallet}>Wallet</Button>
+            <Button variant="info" onClick={openWallet} className="wallet__info">
+                <span>Wallet: </span>
+                <span>{roundSeparateNumber(summary)} USD </span>
+                <span>{changeWallet < 0 ? `-${roundSeparateNumber(changeWallet)}` : `+${roundSeparateNumber(changeWallet)}`}
+                ({changePercent()} %) </span>
+            </Button>
         </div>
     )
 };

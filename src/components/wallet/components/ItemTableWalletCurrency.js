@@ -7,7 +7,7 @@ const ItemTableWalletCurrency = ({currency, index}) => {
     const dispatch = useDispatch();
 
     const deleteCurrent = () => {
-        dispatch({type: "DELETE_CURRENT_CURRENCY", payload: currency.id});
+        dispatch({type: "DELETE_CURRENT_CURRENCY", payload: currency});
     }
                return (
             <>

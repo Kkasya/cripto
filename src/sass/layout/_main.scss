@@ -35,13 +35,21 @@
 .centeredAllBlock {
   display: flex;
   justify-content: center;
-  align-items: center;
-  //margin: 0 auto;
   width: 100%;
 }
 
 .button {
   cursor: pointer;
+
+  &__add {
+    display: flex;
+    align-items: center;
+    justify-content: end;
+
+    & > * {
+      padding: 10px 20px !important;
+    }
+  }
 }
 
 .loader {
@@ -53,7 +61,18 @@
 }
 
 @keyframes loader {
-  0% {transform:rotate(-45deg) scale(1)}
-  50%{transform:rotate(-135deg)scale(2)}
-  100%{transform:rotate(-225deg) scale(1)}
+  0% {
+    transform: rotate(-45deg) scale(1)
+  }
+  50% {
+    transform: rotate(-135deg) scale(2)
+  }
+  100% {
+    transform: rotate(-225deg) scale(1)
+  }
+}
+
+a {
+  text-decoration: none !important;
+  color: #000 !important;
 }

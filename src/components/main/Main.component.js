@@ -1,4 +1,10 @@
 import React, {useEffect} from 'react';
+import {
+    BrowserRouter as Router,
+    Switch,
+    Route,
+} from "react-router-dom";
+
 import {getCripto} from "../../common/fetch";
 import TableCurrency from "./components/Table.component";
 import {useDispatch, useSelector} from "react-redux";
@@ -7,6 +13,7 @@ import Loader from "./components/Loader.component";
 import Header from "../header/Header.component";
 import Wallet from "../wallet/Wallet.component";
 import AddingCurrency from "./components/AddingCurrency.component";
+import CurrencyPage from "../currencyPage/CurrencyPage.component";
 
 const Main = () => {
     const dispatch = useDispatch();
@@ -30,18 +37,31 @@ const Main = () => {
     }, []);
 
     return (
-        <div className="main main__content">
-            <Header />
-            <Wallet />
-            <AddingCurrency />
-            {isOpenAssets ?
-                <>
-                    <TableCurrency assets={assets}/>
-                    <PaginationBlock/>
-                </>
-                :
-                <Loader/>}
-        </div>
+        <Router>
+            <div className="main main__content">
+                <Header/>
+                <Wallet/>
+                <AddingCurrency/>
+                <Switch>
+                    {assets.map((item) => (
+                        <Route
+                            key={item.id}
+                            path={"/currency/:id"}
+                            render={() => <CurrencyPage />}
+                        />
+                    ))}
+                    <Route path="/">
+                        {isOpenAssets ?
+                            <>
+                                <TableCurrency assets={assets}/>
+                                <PaginationBlock/>
+                            </>
+                            :
+                            <Loader/>}
+                    </Route>
+                </Switch>
+            </div>
+        </Router>
     )
 };
 
