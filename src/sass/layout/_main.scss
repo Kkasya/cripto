@@ -2,6 +2,7 @@
   &__content {
     max-width: $pc-width;
     height: 100%;
+    margin: 0 auto;
     padding: 0 60px 20px 60px;
     display: flex;
     flex-direction: column;
@@ -75,4 +76,10 @@
 a {
   text-decoration: none !important;
   color: #000 !important;
+}
+
+.table {
+  &__row {
+    cursor: pointer;
+  }
 }

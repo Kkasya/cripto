@@ -30,7 +30,6 @@ const CurrencyPage = () => {
             })();
         }, [id]);
 
-
     const openAddToWallet = () => {
         dispatch({type: "SET_IS_OPEN_ADDING_WALLET", payload: true});
         dispatch({type: "ADD_CURRENT_CURRENCY", payload: asset});

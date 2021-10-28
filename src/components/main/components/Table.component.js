@@ -4,7 +4,7 @@ import ItemTableCurrency from "./ItemTable.component";
 
 const TableCurrency = ({assets}) => {
 	return (
-		<Table bordered hover responsive="sm" >
+		<Table hover responsive>
 			<thead >
 			<tr >
 				<th >Rank</th >
@@ -15,6 +15,7 @@ const TableCurrency = ({assets}) => {
 				<th >Supply</th >
 				<th >Volume(24Hr)</th >
 				<th >Change(24Hr)</th >
+				<th ></th>
 			</tr >
 			</thead >
 			<tbody >

@@ -12,14 +12,14 @@ const AddingCurrency = () => {
     };
 
     const addToWallet = () => {
-        dispatch({type: "ADD_CURRENCY",
-            payload: {
+        const newCurrencyItem = {
             id: addedCurrency.id,
             name: addedCurrency.name,
             price: addedCurrency.priceUsd,
             count: count,
             summary: addedCurrency.priceUsd * count,
-        }});
+        };
+        dispatch({type: "ADD_CURRENCY", payload: newCurrencyItem});
 
         closeWallet();
     };

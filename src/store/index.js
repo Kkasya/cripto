@@ -8,7 +8,6 @@ const rootReducer = combineReducers({
 	details: detailsReducer,
 	wallet: walletReducer,
 });
-
 const store = createStore(rootReducer);
 
 export default store;

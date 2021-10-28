@@ -1,7 +1,6 @@
 const defaultState = {
     assets24h: [],
     details: {},
-    isOpen: '',
 };
 
 const detailsReducer = (state = defaultState, action) => {
@@ -10,8 +9,6 @@ const detailsReducer = (state = defaultState, action) => {
             return {...state, assets24h: action.payload};
         case "ADD_DETAILS":
             return {...state, details: action.payload};
-        case "SET_IS_OPEN":
-            return {...state, isOpen: action.payload};
         default:
             return state;
     }

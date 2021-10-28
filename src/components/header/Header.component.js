@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useEffect} from 'react';
 import {Badge, ListGroup, Button} from "react-bootstrap";
 import {useDispatch, useSelector} from "react-redux";
 import {roundSeparateNumber} from "../../common/utils";
@@ -7,7 +7,15 @@ const Header = () => {
     const {assets} = useSelector(state => state.assets);
     const popularCripto = assets.slice(0, 3);
     const dispatch = useDispatch();
-    const {currency, addedCurrency, changeWallet} = useSelector(state => state.wallet);
+    const {currency, changeWallet} = useSelector(state => state.wallet);
+
+    useEffect(() => {
+        localStorage.setItem('currency', JSON.stringify(currency ))
+    }, [currency]);
+
+    useEffect(() => {
+        localStorage.setItem('changeWallet', JSON.stringify(changeWallet ))
+    }, [changeWallet]);
 
     const summaryCurrency = () => {
         let summary = 0;
@@ -22,7 +30,7 @@ const Header = () => {
     const changePercent = () => {
         const prevSummary = summary === changeWallet ? changeWallet : summary - changeWallet;
         return changeWallet ? (changeWallet * 100 / prevSummary).toFixed() : 0
-    }
+    };
 
     const openWallet = () => {
         dispatch({type: "SET_IS_OPEN_WALLET", payload: true});

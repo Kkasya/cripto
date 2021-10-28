@@ -1,7 +1,10 @@
+const currency = JSON.parse(localStorage.getItem('currency')) || [];
+const changeWallet = JSON.parse(localStorage.getItem('changeWallet')) || null;
+
 const defaultState = {
-    currency: [],
+    currency: currency,
     addedCurrency: {},
-    changeWallet: null,
+    changeWallet: changeWallet,
     isOpenAddingWallet: false,
     isOpenWallet: false,
 };
