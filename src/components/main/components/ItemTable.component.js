@@ -3,9 +3,11 @@ import {roundSeparateNumber} from "../../../common/utils";
 import {Badge} from "react-bootstrap";
 import {useDispatch} from "react-redux";
 import {addCurrentCurrency, setIsOpenAddingWallet} from "../../../store/walletReducer";
+import {useHistory} from "react-router";
 
 const ItemTableCurrency = ({asset}) => {
     const dispatch = useDispatch();
+    const history = useHistory();
 
     const openAddToWallet = () => {
         dispatch(setIsOpenAddingWallet(true));
@@ -14,7 +16,7 @@ const ItemTableCurrency = ({asset}) => {
 
     const gotoCurrentCurrency = (e) => {
         if (!e.target.classList.contains('badge')) {
-            window.location.href = `currency/${asset.id}`
+            history.push(`cripto/currency/${asset.id}`);
         }
     };
 

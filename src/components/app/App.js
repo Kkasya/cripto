@@ -21,11 +21,11 @@ const App = () => {
                 {assets.map((item) => (
                     <Route
                         key={item.id}
-                        path={"/currency/:id"}
+                        path={"/cripto/currency/:id"}
                         render={() => <CurrencyPage/>}
                     />
                 ))}
-                <Route path="/">
+                <Route path="/cripto">
                     <Main/>
                 </Route>
             </Switch>
