@@ -1,1 +1,1 @@
-# cripto
+permalink: /index.html
