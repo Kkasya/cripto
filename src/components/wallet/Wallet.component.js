@@ -2,13 +2,14 @@ import React from 'react';
 import {Button, Modal} from "react-bootstrap";
 import {useDispatch, useSelector} from "react-redux";
 import TableWalletCurrency from "./components/TableWalletCurrency.component";
+import {setIsOpenWallet} from "../../store/walletReducer";
 
 const Wallet = () => {
     const {isOpenWallet} = useSelector(state => state.wallet);
     const dispatch = useDispatch();
 
     const closeWallet = () => {
-        dispatch({type: "SET_IS_OPEN_WALLET", payload: false});
+        dispatch(setIsOpenWallet(false));
     }
 
     return (

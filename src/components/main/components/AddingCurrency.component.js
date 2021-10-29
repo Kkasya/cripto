@@ -1,6 +1,7 @@
 import React, {useState} from "react";
 import {useDispatch, useSelector} from "react-redux";
 import {Button, FormControl, InputGroup, Modal} from "react-bootstrap";
+import {addCurrency, setIsOpenAddingWallet} from "../../../store/walletReducer";
 
 const AddingCurrency = () => {
     const {isOpenAddingWallet, addedCurrency} = useSelector(state => state.wallet);
@@ -8,7 +9,7 @@ const AddingCurrency = () => {
     const [count, setCount] = useState(0);
 
     const closeWallet = () => {
-        dispatch({type: "SET_IS_OPEN_ADDING_WALLET", payload: false});
+        dispatch(setIsOpenAddingWallet(false));
     };
 
     const addToWallet = () => {
@@ -19,7 +20,7 @@ const AddingCurrency = () => {
             count: count,
             summary: addedCurrency.priceUsd * count,
         };
-        dispatch({type: "ADD_CURRENCY", payload: newCurrencyItem});
+        dispatch(addCurrency(newCurrencyItem));
 
         closeWallet();
     };

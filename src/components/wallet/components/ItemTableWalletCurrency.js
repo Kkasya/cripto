@@ -2,13 +2,14 @@ import React from "react";
 import {roundSeparateNumber} from "../../../common/utils";
 import {Badge} from "react-bootstrap";
 import {useDispatch} from "react-redux";
+import {deleteCurrentCurrency} from "../../../store/walletReducer";
 
 const ItemTableWalletCurrency = ({currency, index}) => {
     const dispatch = useDispatch();
 
     const deleteCurrent = () => {
-        dispatch({type: "DELETE_CURRENT_CURRENCY", payload: currency});
-    }
+        dispatch(deleteCurrentCurrency(currency));
+    };
                return (
             <>
                 <tr >
@@ -22,7 +23,6 @@ const ItemTableWalletCurrency = ({currency, index}) => {
 
             </>
         );
-    }
-;
+    };
 
 export default ItemTableWalletCurrency;

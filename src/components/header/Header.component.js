@@ -2,10 +2,12 @@ import React, {useEffect} from 'react';
 import {Badge, ListGroup, Button} from "react-bootstrap";
 import {useDispatch, useSelector} from "react-redux";
 import {roundSeparateNumber} from "../../common/utils";
+import {setIsOpenWallet} from "../../store/walletReducer";
+import {getAllCripto, getCripto, getCurrentCripto} from "../../common/fetch";
 
 const Header = () => {
-    const {assets} = useSelector(state => state.assets);
-    const popularCripto = assets.slice(0, 3);
+    const {allAssets} = useSelector(state => state.assets);
+    const popularCripto = allAssets.slice(0, 3);
     const dispatch = useDispatch();
     const {currency, changeWallet} = useSelector(state => state.wallet);
 
@@ -16,6 +18,15 @@ const Header = () => {
     useEffect(() => {
         localStorage.setItem('changeWallet', JSON.stringify(changeWallet ))
     }, [changeWallet]);
+
+    useEffect(() => {
+        localStorage.setItem('allAssets', JSON.stringify(allAssets ))
+    }, [allAssets]);
+
+    useEffect(() => {
+        const interval = setInterval(() => dispatch(getAllCripto()), 10000);
+        return () =>  clearInterval(interval);
+    }, []);
 
     const summaryCurrency = () => {
         let summary = 0;
@@ -33,19 +44,19 @@ const Header = () => {
     };
 
     const openWallet = () => {
-        dispatch({type: "SET_IS_OPEN_WALLET", payload: true});
+        dispatch(setIsOpenWallet(true));
     };
 
     return (
         <div className="header header__content">
-            <ListGroup horizontal className="popularCripto__content">
+            {allAssets && <ListGroup horizontal className="popularCripto__content">
                 {popularCripto.map((cripto) =>
                     <ListGroup.Item className="border-0 popularCripto__item" key={cripto.symbol}>
                         <span className="popularCripto__name">{cripto.name} ({cripto.symbol})</span>
                         <Badge bg="primary">${roundSeparateNumber(cripto.marketCapUsd)}</Badge>
                     </ListGroup.Item>
                 )}
-            </ListGroup>
+            </ListGroup>}
             <Button variant="info" onClick={openWallet} className="wallet__info">
                 <span>Wallet: </span>
                 <span>{roundSeparateNumber(summary)} USD </span>

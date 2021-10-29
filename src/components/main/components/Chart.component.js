@@ -2,7 +2,7 @@ import React from 'react';
 import {CartesianGrid, Line, LineChart, ResponsiveContainer, Tooltip, XAxis, YAxis} from "recharts";
 
 const Chart = ({assets24h, min, max}) => {
-    const formatYAxis = (tickItem) => Number(tickItem).toFixed();
+    const formatYAxis = (tickItem) => Number(tickItem).toFixed(2);
 
     const formatXAxis = (tickItem) => {
         const hour = (new Date(tickItem)).getHours();

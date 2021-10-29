@@ -2,13 +2,14 @@ import React from "react";
 import {roundSeparateNumber} from "../../../common/utils";
 import {Badge} from "react-bootstrap";
 import {useDispatch} from "react-redux";
+import {addCurrentCurrency, setIsOpenAddingWallet} from "../../../store/walletReducer";
 
 const ItemTableCurrency = ({asset}) => {
     const dispatch = useDispatch();
 
     const openAddToWallet = () => {
-        dispatch({type: "SET_IS_OPEN_ADDING_WALLET", payload: true});
-        dispatch({type: "ADD_CURRENT_CURRENCY", payload: asset});
+        dispatch(setIsOpenAddingWallet(true));
+        dispatch(addCurrentCurrency(asset));
     };
 
     const gotoCurrentCurrency = (e) => {

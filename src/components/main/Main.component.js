@@ -9,22 +9,11 @@ const Main = () => {
     const dispatch = useDispatch();
     const {assets, activePage, limit, isOpenAssets} = useSelector(state => state.assets);
 
-    const getAssets = () => {
-        (async () => {
-            let assetsFetch = await getCripto(activePage, limit);
-            while (!assetsFetch) assetsFetch = await getCripto(activePage, limit);
-            dispatch({type: "ADD_ASSETS", payload: assetsFetch.data});
-            dispatch({type: "SET_IS_OPEN_ASSETS", payload: true});
-        })();
-    }
-
     useEffect(() => {
-        getAssets();
-    }, [activePage]);
-
-    useEffect(() => {
-        setInterval(getAssets, 10000);
-    }, []);
+        localStorage.setItem('page', JSON.stringify(activePage ))
+        const interval = setInterval(() => dispatch(getCripto(activePage, limit)), 2000);
+        return () => clearInterval(interval);
+    }, [activePage, limit]);
 
     return (
         <div className="main main__content">
