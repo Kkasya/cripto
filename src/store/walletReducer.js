@@ -12,25 +12,27 @@ const defaultState = {
 const walletReducer = (state = defaultState, action) => {
     switch (action.type) {
         case "ADD_CURRENCY":
-            if (state.currency.filter((item) => item.id === action.payload.id).length) {
+            const tempState = [...state.currency];
+            const sameCurrency = tempState.filter((item) => item.id === action.payload.id && Number(item.price) === Number(action.payload.price));
+            if (sameCurrency.length) {
+                sameCurrency[0].count = Number(sameCurrency[0].count) + Number(action.payload.count);
+                sameCurrency[0].summary = Number(sameCurrency[0].summary) + Number(action.payload.summary);
+
                 return {
                     ...state,
-                    currency: [...state.currency].map((item) => {
-                        if (item.id === action.payload.id && item.price === action.payload.price) {
-                            item.summary = Number(item.summary) + Number(action.payload.summary);
-                            item.count = Number(item.count) + Number(action.payload.count);
-                        }
-                        return item
-                    }),
+                    currency: [...tempState],
                     changeWallet: action.payload.summary
                 };
-            }
-                else return {...state,  currency: [...state.currency, action.payload],
-                changeWallet: action.payload.summary};
+            } else return {
+                ...state, currency: [...state.currency, action.payload],
+                changeWallet: action.payload.summary
+            };
         case "DELETE_CURRENT_CURRENCY":
-            return {...state, changeWallet: -Number(action.payload.summary),
+            return {
+                ...state, changeWallet: -Number(action.payload.summary),
                 currency: [...state.currency].filter((item) =>
-                    item.id !== action.payload.id && item.price !== action.payload.priceUsd)};
+                    !(item.id === action.payload.id && Number(item.price) === Number(action.payload.price)))
+            }
         case "ADD_CURRENT_CURRENCY":
             return {...state, addedCurrency: action.payload};
         case "SET_IS_OPEN_ADDING_WALLET":

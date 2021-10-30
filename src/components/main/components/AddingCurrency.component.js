@@ -29,11 +29,8 @@ const AddingCurrency = () => {
     };
 
     const checkValue = (e) => {
-        console.log('----------')
-        console.log(Number(e.target.value) > 0)
         if (Number(e.target.value) >= 0 )  setCount(e.target.value);
-
-    }
+    };
 
     return (
         <Modal

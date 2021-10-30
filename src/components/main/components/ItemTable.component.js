@@ -29,7 +29,7 @@ const ItemTableCurrency = ({asset}) => {
             <td>${roundSeparateNumber(asset.vwap24Hr)}</td>
             <td>${roundSeparateNumber(asset.supply)}</td>
             <td>${roundSeparateNumber(asset.volumeUsd24Hr)}</td>
-            <td>{roundSeparateNumber(asset.changePercent24Hr)}%</td>
+            <td>{Number(asset.changePercent24Hr).toFixed(2)}%</td>
             <span className="button button__add"><Badge bg="info" onClick={openAddToWallet}>+</Badge></span>
         </tr>
     );

@@ -1,5 +1,5 @@
 const roundSeparateNumber = (data) => {
-	let number = Math.abs(Number(data));
+	let number = Number(data);
 
 	const options = {
 	'trillion': 't',
@@ -17,6 +17,10 @@ const roundSeparateNumber = (data) => {
 
 	if (number >= 1.0e+6) {
 		return (number / 1.0e+6).toFixed(2) + `${options.million}`;
+	}
+
+	if (number < 0.01) {
+		return number.toFixed(4);
 	}
 
 	return Number((number.toFixed(2))).toLocaleString('ru');
