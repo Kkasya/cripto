@@ -5,7 +5,7 @@ import Header from "../header/Header.component";
 import React from "react";
 import Wallet from "../wallet/Wallet.component";
 import AddingCurrency from "../main/components/AddingCurrency.component";
-import {BrowserRouter as Router, Route, Switch} from "react-router-dom";
+import {BrowserRouter as Router, HashRouter, Route, Switch} from "react-router-dom";
 import CurrencyPage from "../currencyPage/CurrencyPage.component";
 import {useSelector} from "react-redux";
 
@@ -13,7 +13,7 @@ const App = () => {
     const {assets} = useSelector(state => state.assets);
 
     return (
-        <Router>
+        <HashRouter basename="/cripto" >
             <Header/>
             <Wallet/>
             <AddingCurrency/>
@@ -21,15 +21,15 @@ const App = () => {
                 {assets.map((item) => (
                     <Route
                         key={item.id}
-                        path={"/cripto/currency/:id"}
+                        path={"/currency/:id"}
                         render={() => <CurrencyPage/>}
                     />
                 ))}
-                <Route path="/cripto">
+                <Route path="/">
                     <Main/>
                 </Route>
             </Switch>
-        </Router>
+        </HashRouter>
     );
 }
 

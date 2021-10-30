@@ -16,7 +16,7 @@ const ItemTableCurrency = ({asset}) => {
 
     const gotoCurrentCurrency = (e) => {
         if (!e.target.classList.contains('badge')) {
-            history.push(`cripto/currency/${asset.id}`);
+            history.push(`currency/${asset.id}`);
         }
     };
 
